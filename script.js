@@ -1,5 +1,5 @@
 // ==========================================
-// 0. 2-SECOND @rupnar5aurabh INTRO SPLASH
+// 0. 2-SECOND @youngmaster1143 INTRO SPLASH
 // ==========================================
 window.addEventListener('DOMContentLoaded', () => {
   const splash = document.getElementById('intro-splash');
