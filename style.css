@@ -3,11 +3,10 @@
 :root {
   --gold: #fbbf24;
   --red: #f43f5e;
-  --vice-pink: #ff007f;
   --cyan: #00f0ff;
   --green: #10b981;
-  --glass: rgba(12, 10, 28, 0.78);
-  --glass-border: rgba(255, 0, 127, 0.32);
+  --glass: rgba(10, 15, 28, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.16);
 }
 
 * {
@@ -23,110 +22,11 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #070514;
+  background-color: #070b14;
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
 }
 
-/* ==========================================
-   2-SECOND @rupnar5aurabh INTRO SPLASH
-   ========================================== */
-#intro-splash {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: radial-gradient(circle at 50% 50%, #1f093d 0%, #05020a 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-
-#intro-splash.fade-out {
-  opacity: 0;
-  transform: scale(1.08);
-  pointer-events: none;
-}
-
-.splash-glow {
-  position: absolute;
-  width: 340px;
-  height: 340px;
-  background: radial-gradient(circle, rgba(255, 0, 127, 0.45), rgba(0, 240, 255, 0.2), transparent 70%);
-  filter: blur(30px);
-  animation: pulseGlow 1.5s infinite alternate;
-}
-
-@keyframes pulseGlow {
-  from { transform: scale(0.9); opacity: 0.7; }
-  to { transform: scale(1.2); opacity: 1; }
-}
-
-.splash-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.splash-tag {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 3px;
-  color: var(--cyan);
-  font-weight: 800;
-}
-
-.splash-brand {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(2rem, 7vw, 4.2rem);
-  font-weight: 900;
-  color: #fff;
-  text-shadow: 0 0 20px var(--vice-pink), 0 0 45px var(--gold);
-  letter-spacing: 2px;
-  animation: brandZoom 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes brandZoom {
-  0% { transform: scale(0.75); opacity: 0; }
-  25% { opacity: 1; }
-  100% { transform: scale(1.05); opacity: 1; }
-}
-
-.splash-sub {
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--gold);
-  letter-spacing: 2px;
-}
-
-.splash-loader {
-  width: 220px;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 99px;
-  overflow: hidden;
-  margin-top: 10px;
-  border: 1px solid rgba(255, 0, 127, 0.4);
-}
-
-.splash-bar {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--cyan), var(--vice-pink), var(--gold));
-  animation: loadFill 1.9s ease-out forwards;
-}
-
-@keyframes loadFill {
-  0% { width: 0%; }
-  100% { width: 100%; }
-}
-
-/* CANVAS & VIGNETTES */
 #game-canvas {
   position: absolute;
   top: 0;
@@ -141,19 +41,9 @@ body, html {
   inset: 0;
   z-index: 8;
   pointer-events: none;
-  background: radial-gradient(circle, transparent 40%, rgba(244, 63, 94, 0.85) 100%);
+  background: radial-gradient(circle, transparent 40%, rgba(244, 63, 94, 0.8) 100%);
   opacity: 0;
   transition: opacity 0.2s ease-out;
-}
-
-#nitro-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 7;
-  pointer-events: none;
-  background: radial-gradient(circle, transparent 52%, rgba(0, 240, 255, 0.42) 100%);
-  opacity: 0;
-  transition: opacity 0.15s ease-out;
 }
 
 /* AI TITAN MODAL STYLES */
@@ -170,20 +60,20 @@ body, html {
 }
 
 .ai-box {
-  background: rgba(14, 12, 34, 0.96);
-  border: 1.5px solid var(--cyan);
+  background: rgba(12, 18, 35, 0.95);
+  border: 1.5px solid rgba(0, 240, 255, 0.5);
   border-radius: 20px;
   width: 100%;
   max-width: 400px;
   height: 420px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 240, 255, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
   overflow: hidden;
 }
 
 .ai-header {
-  background: linear-gradient(90deg, rgba(255, 0, 127, 0.2), rgba(0, 240, 255, 0.2));
+  background: rgba(0, 240, 255, 0.12);
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
@@ -207,7 +97,7 @@ body, html {
 
 .ai-header h3 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--cyan);
   letter-spacing: 1px;
 }
@@ -240,7 +130,7 @@ body, html {
 
 .ai-msg.bot {
   align-self: flex-start;
-  border-left: 3px solid var(--vice-pink);
+  border-left: 3px solid var(--cyan);
   color: #e2e8f0;
 }
 
@@ -276,9 +166,9 @@ body, html {
 }
 
 .ai-footer button {
-  background: linear-gradient(90deg, var(--vice-pink), var(--cyan));
+  background: var(--cyan);
   border: none;
-  color: #fff;
+  color: #070b14;
   font-family: 'Orbitron', sans-serif;
   font-weight: 800;
   padding: 0 16px;
@@ -304,7 +194,7 @@ body, html {
   font-size: clamp(4.5rem, 15vw, 8rem);
   font-weight: 900;
   color: var(--gold);
-  text-shadow: 0 0 35px var(--vice-pink), 0 8px 20px #000;
+  text-shadow: 0 0 35px rgba(251, 191, 36, 0.9), 0 8px 20px #000;
   animation: countPop 0.7s infinite;
 }
 
@@ -339,9 +229,10 @@ body, html {
   gap: 7px;
 }
 
+/* BRANDING PILL: Crystal-clear uppercase font without distortion */
 .brand-pill {
   background: var(--glass);
-  border: 1.5px solid var(--gold);
+  border: 1.5px solid rgba(251, 191, 36, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 6px 16px;
@@ -354,15 +245,15 @@ body, html {
   font-weight: 800;
   color: var(--gold);
   letter-spacing: 0.8px;
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.35);
 }
 
 .live-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--vice-pink);
-  box-shadow: 0 0 8px var(--vice-pink);
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red);
   animation: blink 0.9s infinite alternate;
 }
 
@@ -381,9 +272,6 @@ body, html {
   align-items: center;
   gap: 6px;
   width: fit-content;
-  font-size: 0.78rem;
-  font-weight: 800;
-  color: var(--cyan);
 }
 
 .heart-icon {
@@ -406,7 +294,7 @@ body, html {
   backdrop-filter: blur(12px);
   padding: 6px 14px;
   border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .metric {
@@ -421,7 +309,7 @@ body, html {
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #cbd5e1;
+  color: #94a3b8;
   font-weight: 700;
 }
 
@@ -487,10 +375,10 @@ body, html {
 
 #combo-popup {
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(1.1rem, 3.2vw, 1.75rem);
+  font-size: clamp(1.1rem, 3vw, 1.65rem);
   font-weight: 900;
   color: var(--gold);
-  text-shadow: 0 0 18px var(--vice-pink), 0 4px 10px rgba(0,0,0,0.95);
+  text-shadow: 0 0 16px rgba(251, 191, 36, 0.75), 0 3px 8px rgba(0,0,0,0.9);
   opacity: 0;
   transform: translateY(10px) scale(0.85);
   transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
@@ -523,9 +411,9 @@ body, html {
   width: 66px;
   height: 66px;
   border-radius: 18px;
-  background: linear-gradient(145deg, rgba(30, 25, 59, 0.88), rgba(10, 10, 28, 0.94));
-  border: 1.5px solid rgba(255, 0, 127, 0.45);
-  border-bottom: 4px solid var(--vice-pink);
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.88), rgba(10, 15, 28, 0.92));
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 4px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(12px);
   color: #fff;
   font-size: 1.4rem;
@@ -538,7 +426,7 @@ body, html {
 }
 
 .steer-btn:active, .steer-btn.pressed {
-  background: rgba(255, 0, 127, 0.38);
+  background: rgba(251, 191, 36, 0.32);
   border-color: var(--gold);
   transform: translateY(2px) scale(0.95);
 }
@@ -546,15 +434,15 @@ body, html {
 .speed-cluster {
   background: var(--glass);
   border: 1px solid var(--glass-border);
-  border-top: 2.5px solid var(--vice-pink);
+  border-top: 2px solid var(--gold);
   backdrop-filter: blur(14px);
   padding: 10px 20px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 185px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  min-width: 175px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .tachometer-arc {
@@ -569,14 +457,14 @@ body, html {
 #rpm-bar {
   width: 12%;
   height: 100%;
-  background: linear-gradient(90deg, var(--cyan), var(--gold), var(--vice-pink));
+  background: linear-gradient(90deg, #10b981, #fbbf24, #f43f5e);
   transition: width 0.08s linear;
 }
 
 .bike-badge-txt {
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   font-weight: 800;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.5px;
   color: var(--gold);
   text-transform: uppercase;
   margin-bottom: 2px;
@@ -594,13 +482,12 @@ body, html {
   font-weight: 900;
   line-height: 1;
   color: #fff;
-  text-shadow: 0 0 12px rgba(255, 0, 127, 0.6);
 }
 
 .unit-txt {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.68rem;
-  color: #cbd5e1;
+  color: #94a3b8;
   font-weight: 700;
 }
 
@@ -627,7 +514,7 @@ body, html {
 #nitro-fill {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, var(--gold), var(--vice-pink), var(--cyan));
+  background: linear-gradient(90deg, var(--gold), var(--red), var(--cyan));
   transition: width 0.1s linear;
 }
 
@@ -666,7 +553,7 @@ body, html {
 }
 
 .pedal-switch .p-icon { font-size: 1.15rem; }
-.pedal-switch .p-lbl { font-size: 0.58rem; letter-spacing: 1px; }
+.pedal-switch .p-lbl { font-size: 0.6rem; letter-spacing: 1px; }
 
 .pedal-brake {
   width: 58px;
@@ -680,8 +567,8 @@ body, html {
 }
 
 .pedal-nitro {
-  width: 64px;
-  height: 80px;
+  width: 62px;
+  height: 78px;
   border: 1.5px solid rgba(0, 240, 255, 0.6);
   border-bottom: 4px solid var(--cyan);
 }
@@ -693,7 +580,7 @@ body, html {
 .pedal-race {
   width: 74px;
   height: 102px;
-  background: linear-gradient(180deg, rgba(16, 185, 129, 0.35), rgba(10, 15, 28, 0.92));
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.32), rgba(10, 15, 28, 0.92));
   border: 2px solid var(--green);
   border-bottom: 5px solid var(--green);
   box-shadow: 0 0 22px rgba(16, 185, 129, 0.38);
@@ -708,12 +595,12 @@ body, html {
   position: absolute;
   inset: 0;
   z-index: 30;
-  background: radial-gradient(circle at 50% 35%, rgba(25, 12, 48, 0.15) 0%, rgba(5, 4, 16, 0.85) 100%);
+  background: radial-gradient(circle at 50% 35%, rgba(15, 23, 42, 0.25) 0%, rgba(5, 8, 18, 0.88) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 18px;
+  padding: 24px 18px;
   pointer-events: auto;
 }
 
@@ -724,58 +611,48 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .creator-badge {
-  background: rgba(255, 0, 127, 0.22);
-  border: 1.5px solid var(--vice-pink);
+  background: rgba(251, 191, 36, 0.16);
+  border: 1.5px solid rgba(251, 191, 36, 0.6);
   color: var(--gold);
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 800;
   padding: 5px 16px;
   border-radius: 50px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  box-shadow: 0 0 18px rgba(255, 0, 127, 0.45);
 }
 
 .lobby-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(1.7rem, 4.5vw, 2.9rem);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
   font-weight: 900;
   letter-spacing: 2px;
   color: #fff;
-  text-shadow: 0 0 20px var(--vice-pink), 0 4px 20px #000;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
 }
 
 .lobby-title span { color: var(--gold); }
 
-.badmos-subtitle {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.76rem;
-  font-weight: 800;
-  color: var(--cyan);
-  letter-spacing: 2px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
-}
-
 .lobby-spacer { flex: 1; }
 
 .lobby-dock {
-  background: rgba(12, 10, 28, 0.9);
-  border: 1.5px solid rgba(255, 0, 127, 0.38);
+  background: rgba(10, 15, 28, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 24px;
-  padding: 16px 20px;
+  padding: 18px 22px;
   width: 100%;
-  max-width: 430px;
+  max-width: 410px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 127, 0.2);
+  gap: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
 .dock-row {
@@ -786,11 +663,11 @@ body, html {
 }
 
 .dock-label {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #cbd5e1;
+  color: #94a3b8;
 }
 
 .seg-control {
@@ -798,7 +675,7 @@ body, html {
   background: rgba(255, 255, 255, 0.06);
   padding: 4px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .seg-btn {
@@ -806,18 +683,18 @@ body, html {
   border: none;
   color: #94a3b8;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
-  padding: 6px 11px;
+  padding: 6px 13px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .seg-btn.active {
-  background: linear-gradient(90deg, var(--vice-pink), var(--gold));
+  background: var(--gold);
   color: #090d16;
-  box-shadow: 0 2px 12px rgba(255, 0, 127, 0.5);
+  box-shadow: 0 2px 10px rgba(251, 191, 36, 0.45);
 }
 
 .paint-dots { display: flex; gap: 10px; }
@@ -834,45 +711,30 @@ body, html {
 .paint-dot.active {
   border-color: #fff;
   transform: scale(1.22);
-  box-shadow: 0 0 12px #fff;
 }
 
 .cta-btn {
   width: 100%;
-  background: linear-gradient(90deg, var(--vice-pink), var(--gold));
+  background: linear-gradient(90deg, #f43f5e, #fbbf24);
   border: none;
   color: #090d16;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 900;
-  padding: 14px;
+  padding: 15px;
   border-radius: 14px;
   cursor: pointer;
   letter-spacing: 2px;
   text-transform: uppercase;
-  box-shadow: 0 8px 25px rgba(255, 0, 127, 0.55);
+  box-shadow: 0 8px 25px rgba(244, 63, 94, 0.5);
   transition: transform 0.15s ease;
 }
 .cta-btn:active { transform: scale(0.97); }
 
-.secondary-btn {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 800;
-  padding: 10px;
-  border-radius: 12px;
-  cursor: pointer;
-  letter-spacing: 1.5px;
-}
-
 .sub-hint {
   text-align: center;
-  font-size: 0.7rem;
-  color: #cbd5e1;
+  font-size: 0.72rem;
+  color: #94a3b8;
   font-weight: 600;
 }
 
@@ -883,8 +745,8 @@ body, html {
 }
 
 .res-box {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 0, 127, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 10px;
   border-radius: 12px;
   text-align: center;
@@ -894,11 +756,11 @@ body, html {
   #hud { padding: 10px 10px; }
   .score-cluster { padding: 4px 8px; }
   .metric { padding: 0 5px; }
-  .metric-val { font-size: 0.82rem; }
-  .speed-cluster { min-width: 132px; padding: 8px 12px; }
+  .metric-val { font-size: 0.85rem; }
+  .speed-cluster { min-width: 126px; padding: 8px 12px; }
   #speed-val { font-size: 1.7rem; }
   .steer-btn { width: 56px; height: 56px; }
   .pedal-brake { width: 50px; height: 56px; }
-  .pedal-nitro { width: 54px; height: 68px; }
+  .pedal-nitro { width: 52px; height: 68px; }
   .pedal-race { width: 64px; height: 88px; }
 }
