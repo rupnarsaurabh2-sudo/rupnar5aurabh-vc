@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>David Putra 2000cc • Vice City Badmos Edition (@rupnar5aurabh)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==========================================
+       2-SECOND ROCKSTAR STYLE INTRO SPLASH
+       ========================================== -->
+  <div id="intro-splash">
+    <div class="splash-glow"></div>
+    <div class="splash-content">
+      <div class="splash-tag">OFFICIAL VICE CITY EDITION • PRESENTED BY</div>
+      <h1 class="splash-brand">@rupnar5aurabh</h1>
+      <div class="splash-sub">SAURABH SUGREEV RUPNAR STUDIOS • 2000cc ENGINE</div>
+      <div class="splash-loader">
+        <div class="splash-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D GAME CANVAS -->
+  <canvas id="game-canvas"></canvas>
+
+  <!-- DAMAGE RED VIGNETTE & SPEED LINES -->
+  <div id="damage-flash"></div>
+  <div id="nitro-vignette"></div>
+
+  <!-- 3-2-1-GO! COUNTDOWN OVERLAY -->
+  <div id="countdown-overlay" class="hidden">
+    <div id="countdown-text">3</div>
+  </div>
+
+  <!-- AI TITAN SUPPORT MODAL -->
+  <div id="ai-modal" class="ai-modal hidden">
+    <div class="ai-box">
+      <div class="ai-header">
+        <div class="ai-title-row">
+          <span class="ai-status-dot"></span>
+          <h3>AI Titan Support • Vice City Net</h3>
+        </div>
+        <button type="button" id="ai-close-btn" class="ai-close">&times;</button>
+      </div>
+      <div class="ai-body" id="ai-chat-body">
+        <div class="ai-msg bot">
+          Yo Badmos! I am <strong>AI Titan</strong>. This Vice City 2000cc masterpiece featuring <strong>Badmos Doraemon</strong> was built by <strong>Saurabh Sugreev Rupnar (@rupnar5aurabh)</strong>. Ask me about controls, stunts, or report any feedback!
+        </div>
+      </div>
+      <div class="ai-footer">
+        <input type="text" id="ai-input" placeholder="Ask AI Titan or report issue..." />
+        <button type="button" id="ai-send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRO RACING HUD -->
+  <div id="hud">
+    <!-- TOP BAR -->
+    <div class="hud-top">
+      <div class="player-cluster">
+        <div class="brand-pill">
+          <span class="live-dot"></span>
+          @rupnar5aurabh
+        </div>
+        <div class="hearts-pill" id="hearts-container">
+          <span class="heart-icon" id="heart-1">❤️</span>
+          <span class="heart-icon" id="heart-2">❤️</span>
+          <span class="heart-icon" id="heart-3">❤️</span>
+        </div>
+      </div>
+
+      <div class="score-cluster">
+        <div class="metric">
+          <div class="metric-lbl">Respect</div>
+          <div class="metric-val" id="score-val">0</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">Combo</div>
+          <div class="metric-val cyan" id="combo-val">1X</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">Coins</div>
+          <div class="metric-val gold" id="coin-val">0</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">Best</div>
+          <div class="metric-val" id="best-val">0</div>
+        </div>
+      </div>
+
+      <div class="quick-icons">
+        <button type="button" class="icon-btn" id="ai-bot-btn" title="AI Titan Support">🤖</button>
+        <button type="button" class="icon-btn" id="ctrl-toggle-btn" title="Switch Buttons / Gyro">🎮</button>
+        <button type="button" class="icon-btn" id="cam-btn" title="Camera Angle (C)">🎥</button>
+        <button type="button" class="icon-btn" id="theme-btn" title="Vice Sunset / Neon Night / Miami Day">🌆</button>
+        <button type="button" class="icon-btn" id="horn-top-btn" title="Badmos Horn (H)">📯</button>
+        <button type="button" class="icon-btn" id="mute-btn" title="Sound & Synthwave On / Off">🔊</button>
+      </div>
+    </div>
+
+    <!-- CENTER POPUPS -->
+    <div class="hud-center">
+      <div id="gyro-recenter-chip">📱 GYRO ACTIVE • TAP TO RE-CENTER</div>
+      <div id="combo-popup">MISSION PASSED! RESPECT +250</div>
+    </div>
+
+    <!-- BOTTOM CONTROLS -->
+    <div class="hud-bottom">
+      <div class="steer-zone" id="steer-touch-group">
+        <button type="button" class="steer-btn" id="btn-left">&#9664;</button>
+        <button type="button" class="steer-btn" id="btn-right">&#9654;</button>
+      </div>
+
+      <div class="speed-cluster">
+        <div class="tachometer-arc">
+          <div id="rpm-bar"></div>
+        </div>
+        <div class="bike-badge-txt">BADMOS DORAEMON • 2000cc</div>
+        <div class="speed-row">
+          <span id="speed-val">0</span>
+          <span class="unit-txt">KM/H</span>
+        </div>
+        <div class="gear-pill" id="gear-val">GEAR 1 • IDLE</div>
+        <div class="nitro-mini-bar">
+          <div id="nitro-fill"></div>
+        </div>
+      </div>
+
+      <div class="pedals-zone">
+        <button type="button" class="pedal-switch pedal-brake" id="btn-brake">
+          <span class="pedal-grip"></span>
+          <span class="p-icon">🛑</span>
+          <span class="p-lbl">BRAKE</span>
+        </button>
+        <button type="button" class="pedal-switch pedal-nitro" id="btn-nitro">
+          <span class="pedal-grip"></span>
+          <span class="p-icon">🔥</span>
+          <span class="p-lbl">WHEELIE</span>
+        </button>
+        <button type="button" class="pedal-switch pedal-race" id="btn-race">
+          <span class="pedal-grip"></span>
+          <span class="p-icon">⚡</span>
+          <span class="p-lbl">RACE</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- START LOBBY -->
+  <div class="overlay-screen" id="start-screen">
+    <div class="lobby-header">
+      <div class="creator-badge">@rupnar5aurabh OFFICIAL • VICE CITY</div>
+      <h1 class="lobby-title">DAVID PUTRA <span>2000cc</span></h1>
+      <div class="badmos-subtitle">😎 FEAT. BADMOS DORAEMON EDITION</div>
+    </div>
+
+    <div class="lobby-spacer"></div>
+
+    <div class="lobby-dock">
+      <!-- GAME MODE SELECTOR -->
+      <div class="dock-row">
+        <span class="dock-label">Vice Mode</span>
+        <div class="seg-control">
+          <button type="button" class="seg-btn active" id="mode-roam">🌴 Free Roam (Chill)</button>
+          <button type="button" class="seg-btn" id="mode-race">🔥 Ranked Race</button>
+        </div>
+      </div>
+
+      <!-- STEERING SELECTOR -->
+      <div class="dock-row">
+        <span class="dock-label">Steering</span>
+        <div class="seg-control">
+          <button type="button" class="seg-btn active" id="pick-buttons">🎮 Buttons / Keys</button>
+          <button type="button" class="seg-btn" id="pick-gyro">📱 Gyro Tilt</button>
+        </div>
+      </div>
+
+      <!-- BIKE PAINT -->
+      <div class="dock-row">
+        <span class="dock-label">2000cc Paint</span>
+        <div class="paint-dots">
+          <div class="paint-dot active" data-bike="#ff0055" data-neon="#00f0ff" style="background: #ff0055;" title="Vice Pink"></div>
+          <div class="paint-dot" data-bike="#00a2ff" data-neon="#fbbf24" style="background: #00a2ff;" title="Doraemon Blue"></div>
+          <div class="paint-dot" data-bike="#ff6600" data-neon="#00f0ff" style="background: #ff6600;" title="Miami Sunset"></div>
+          <div class="paint-dot" data-bike="#10b981" data-neon="#fbbf24" style="background: #10b981;" title="Emerald Gold"></div>
+          <div class="paint-dot" data-bike="#9333ea" data-neon="#ff007f" style="background: #9333ea;" title="Synth Purple"></div>
+        </div>
+      </div>
+
+      <button type="button" class="cta-btn" id="start-btn">ENTER VICE CITY</button>
+      <div class="sub-hint">Created by Saurabh Sugreev Rupnar • Hold ⚡ RACE & 🔥 WHEELIE for Stunts</div>
+    </div>
+  </div>
+
+  <!-- GAME OVER MODAL -->
+  <div class="overlay-screen hidden" id="gameover-screen">
+    <div class="lobby-header">
+      <div class="creator-badge">@rupnar5aurabh RACING</div>
+      <h1 class="lobby-title">WASTED <span>BRO!</span></h1>
+      <div class="badmos-subtitle">BADMOS DORAEMON WILL BE BACK</div>
+    </div>
+
+    <div class="lobby-dock">
+      <div class="results-grid">
+        <div class="res-box">
+          <div class="metric-lbl">Total Respect</div>
+          <div class="metric-val" id="final-score">0</div>
+        </div>
+        <div class="res-box">
+          <div class="metric-lbl">Best Record</div>
+          <div class="metric-val gold" id="final-best">0</div>
+        </div>
+        <div class="res-box">
+          <div class="metric-lbl">Vice Coins</div>
+          <div class="metric-val" id="final-coins">0</div>
+        </div>
+        <div class="res-box">
+          <div class="metric-lbl">Badmos Stunts</div>
+          <div class="metric-val cyan" id="final-stunts">0</div>
+        </div>
+      </div>
+
+      <button type="button" class="cta-btn" id="restart-btn">RIDE AGAIN</button>
+      <button type="button" class="secondary-btn" id="back-lobby-btn">CHANGE MODE / PAINT</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
